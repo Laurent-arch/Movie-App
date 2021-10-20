@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/style.css" />
+    <title>Document</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400;500;900&display=swap');
+
+      body {
+        display: grid;
+        place-items: center;
+        background-color: #15151e;
+      }
+      .container {
+        max-width: 660px;
+        margin: 3rem 0;
+      }
+      .title{
+          color: yellow;
+          font-size: 2.8rem;
+          margin-bottom: 2rem;
+          letter-spacing: 2px;
+      }
+      h1,
+      p {
+        font-family: "Roboto Slab", serif;
+        color: blanchedalmond;
+      }
+      .sinopsis {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+      .image {
+        border-radius: 5%;
+      }
+      .description {
+        display: flex;
+        flex-direction: column;
+      }
+      .span-rating{
+          color: yellow;
+          font-size: 1.2rem;
+          margin-left: 0.4rem;
+          font-weight: bold;
+      }
+      .span-director{
+          font-weight: bold;
+          margin-left: 0.4rem;
+      }
+      .year{
+          font-weight: bold;
+      }
+      .year,
+      .director,
+      .rating,
+      .plot,
+      .btn {
+        margin-left: 2rem;
+      }
+      .btn{
+          width: 5rem;
+          margin-top: 1rem;
+          padding: 0.4rem 1.6rem 0.4rem 0.9rem;
+          background-color: rgb(233, 51, 96);
+          border-radius: 5px;
+          color: white;
+          font-family: inherit;
+          font-size: 1.2rem;
+          cursor: pointer;
+          border-style: none;
+      }
+      .btn:hover{
+          background-color: rgb(128, 31, 55);
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <% allMovies.map((movie) => {%>
+        
+    <div class="container">
+      <h1 class="title"><%= movie.title %></h1>
+      %>
+      <div class="sinopsis">
+        <img src="<%= movie.image %>" alt="" class="image" />
+        <div class="description">
+          <p class="plot"><%= movie.plot %></p>
+          <p class="year"><%= movie.year %></p>
+          <p class="director">Director: <span class="span-director"><%= movie.director %></span></p>
+          <p class="rating">Imdb rating: <span class="span-rating"><%= movie.imdbRating %></span></p>
+          <button class="btn">Delete</button>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </body>
+</html>
