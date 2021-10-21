@@ -1,13 +1,18 @@
 
-
 const express = require('express');
 const app = express();
 const movies = require ('./routes/movies')
+const axios = require ('axios')
 const connectDB = require('./db/connect')
 require('dotenv').config()
+const path = require('path')
+
 
 app.use(express.json());
-app.use(express.static('/public'));
+app.use(express.static(path.resolve("./public")));
+app.use(express.urlencoded({
+    extended: true
+}))
 app.set("view engine", "ejs");
 
 app.use('/movies', movies)

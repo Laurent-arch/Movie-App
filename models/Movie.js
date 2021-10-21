@@ -3,30 +3,30 @@ const mongoose = require('mongoose')
 const MovieSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, "must provide a name"],
+    required: true,
     trim: true,
   },
   year: {
     type: Number,
-    required: [true, "must provide a year"],
+    required: true,
   },
   image: {
     type: String,
-    required: [true, "must provide an image"],
+    required: true,
   },
   plot: {
     type: String,
-    required: [true, "must provide a plot"],
+    required: true,
     trim: true,
   },
   director: {
     type: String,
-    required: [true, "must provide a director"],
+    required: true,
     trim: true,
   },
   imdbRating: {
     type: Number,
-    required: [true, "must provide a rating"],
+    required: true,
   },
 });
 

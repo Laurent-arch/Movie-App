@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/form.css" />
+    <title>Insert form</title>
+    <style>
+        .title{
+            margin-left: 20rem;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="top-container">
+      <a href="/movies"> <button class="btn">Back to the list</button></a>
+      <h1 class="title">Update <%= movie.title %></h1>
+    </div>
+
+    <form action="" class="form-container" method="post">
+      <div class="grid-1">
+        <label for="" class="label">Title</label>
+        <input type="text" name="title" placeholder="Title" />
+        <label for="" class="label">Image</label>
+        <input type="text" name="image" placeholder="Enter a URL" />
+        <label for="" class="label">Plot</label>
+        <textarea type="text" name="plot"></textarea>
+      </div>
+      <div class="grid-2">
+        <label for="" class="label">Year</label>
+        <input type="number" name="year" placeholder="Year" />
+        <label for="" class="label">Director</label>
+        <input type="text" name="director" placeholder="Director" />
+        <label for="" class="label">imdb Rating</label>
+        <input type="text" name="rating" placeholder="Rating" />
+      </div>
+      <button type="submit" id="submit-form" class="btn">Submit</button>
+      <p class="success" id="text-success">New movie was added successfully!</p>
+    </form>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -2,59 +2,85 @@ const Movie = require('../models/Movie');
 
 
 const getAllMovies = async (req, res) => {
-    try {
-       const allMovies = await Movie.find({})
-       res.status(201).render("movies.ejs", { allMovies })
-       console.log(allMovies);
-    } catch (error) {
-        res.status(500).json({ msg: "no movie inserted" });
-    }
-}
+  try {
+    const allMovies = await Movie.find({});
+    res.status(201).render("movies.ejs", { allMovies });
+   
+  } catch (error) {
+    res.status(500).json({ msg: "no movies" });
+  }
+};
 
-const insertMovie = async(req, res) => {
-    try {
-        const movie = await Movie.create(req.body);
-        res.status(201).json({ movie });
-    } catch (error) {
-        res.status(500).json({ msg: 'no movie inserted' });
-    }
-}
+const insertMovie = async (req, res) => {
+  try {
+    const movie = await new Movie({
+      title: req.body.title,
+      image: req.body.image,
+      plot: req.body.plot,
+      year: req.body.year,
+      director: req.body.director,
+      imdbRating: req.body.rating  
+    });
+    movie.save()
+    
+    res.status(201).render("insertMovie.ejs", { movie });
 
-const getMovie = async(req, res) => {
-    try {
-        const movie = await Movie.findOne({_id: req.params.id})
-        if (!movie) {
-          return res
-            .status(404)
-            .json({ msg: `no movie with id: ${req.params.id}` });
-        }
-        res.status(200).json({ movie });
-    } catch (error) {
-        res.status(500).json({ msg: "no movie with this id" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "no movie inserted" });
+  }
+};
+
+const getMovie = async (req, res) => {
+  try {
+    const movie = await Movie.findOne({ _id: req.params.id });
+    if (!movie) {
+      return res.json({ msg: `no movie with id: ${req.params.id}` });
     }
-}
+    res.status(200).render("singleMovie.ejs", { movie });
+  } catch (error) {
+    res.status(500).json({ msg: "no movie with this id" });
+  }
+};
 
 const updateMovie = async (req, res) => {
-    try {
-        const movie = await Movie.findOneAndUpdate({ _id: req.params.id }, req.body, {
-          new: true,
-          runValidators: true,
-        });
-        if (!movie) {
-          return res
-            .status(404)
-            .json({ msg: `no movie with id: ${req.params.id}` });
-        }
-        res.status(200).json({movie})
-    } catch (error) {
-        res.status(500).json({ msg: "no movie with this id" });
+  try {
+    const movie = await Movie.findOneAndUpdate(
+      {
+        _id: req.params.id,
+      },      
+     req.body,
+    {
+        new: true,
+        runValidators: true,
+      }
+    );
+    
+    if (!movie) {
+      return res
+        .status(404)
+        .json({ msg: `no movie with id: ${req.params.id}` });
     }
-}
+    res.status(200).render('update.ejs', { movie });
+  } catch (error) {
+    res.status(500).json({ msg: "no movie with this id" });
+  }
+};
+
+const deleteMovie = async (req, res) => {
+  try {
+    const movie = await Movie.findOneAndDelete({ _id: req.params.id });
+    res.status(201).render("movies.ejs", { movie });
+    console.log(movie);
+  } catch (error) {
+    res.status(500).json({ msg: "no movie with this id" });
+  }
+};
 
 module.exports = {
   getAllMovies,
   insertMovie,
   getMovie,
   updateMovie,
-//   deleteMovie,
+  deleteMovie,
 };

@@ -6,11 +6,13 @@ const {
     insertMovie,
     getMovie,
     updateMovie,
-    deleteMovie
+    deleteMovie,
 } = require('../controllers/movies');
 
-router.route('/').get(getAllMovies).post(insertMovie)
-router.route('/:id').get(getMovie).patch(updateMovie)
-// .delete(deleteMovie);
+router.route("/").get(getAllMovies)
+router.route("/insert").get(insertMovie).post(insertMovie);
+router.route("/:id").get(getMovie).delete(deleteMovie);
+router.route("/update/:id").get(updateMovie).post(updateMovie);
+
 
 module.exports = router;
