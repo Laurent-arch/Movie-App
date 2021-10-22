@@ -20,23 +20,24 @@
 
     <form action="" class="form-container" method="post">
       <div class="grid-1">
+          <input type="hidden" value="<%= movie._id %>">
         <label for="" class="label">Title</label>
-        <input type="text" name="title" placeholder="Title" />
+        <input type="text" name="title" placeholder="Title" value="<%= movie.title %>"/>
         <label for="" class="label">Image</label>
-        <input type="text" name="image" placeholder="Enter a URL" />
+        <input type="text" name="image" placeholder="Enter a URL" value="<%= movie.image %>"/>
         <label for="" class="label">Plot</label>
         <textarea type="text" name="plot"></textarea>
       </div>
       <div class="grid-2">
         <label for="" class="label">Year</label>
-        <input type="number" name="year" placeholder="Year" />
+        <input type="number" name="year" placeholder="Year" value="<%= movie.year %>"/>
         <label for="" class="label">Director</label>
-        <input type="text" name="director" placeholder="Director" />
+        <input type="text" name="director" placeholder="Director" value="<%= movie.director %>"/>
         <label for="" class="label">imdb Rating</label>
-        <input type="text" name="rating" placeholder="Rating" />
+        <input type="text" name="rating" placeholder="Rating" value="<%= movie.rating %>"/>
       </div>
-      <button type="submit" id="submit-form" class="btn">Submit</button>
-      <p class="success" id="text-success">New movie was added successfully!</p>
+      <a href="/movies"> <button type="submit" id="submit-form" class="btn">Submit</button></a>
+      
     </form>
 
     <script src="/script.js"></script>

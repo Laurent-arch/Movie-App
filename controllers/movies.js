@@ -23,8 +23,8 @@ const insertMovie = async (req, res) => {
     });
     movie.save()
     
-    res.status(201).render("insertMovie.ejs", { movie });
-
+    res.status(200).render("insertMovie.ejs", { movie });
+    res.redirect('/')
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "no movie inserted" });
@@ -67,15 +67,15 @@ const updateMovie = async (req, res) => {
   }
 };
 
-const deleteMovie = async (req, res) => {
-  try {
-    const movie = await Movie.findOneAndDelete({ _id: req.params.id });
-    res.status(201).render("movies.ejs", { movie });
-    console.log(movie);
-  } catch (error) {
-    res.status(500).json({ msg: "no movie with this id" });
-  }
-};
+const deleteMovie = (req, res, next) => {
+
+ const movieId = req.body.movieId;
+ Movie.findByIdAndRemove(movieId)
+ .then(() => {
+   console.log('movie removed')
+   res.redirect('/movies');
+ })
+}
 
 module.exports = {
   getAllMovies,
