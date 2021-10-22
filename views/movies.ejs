@@ -6,10 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css"href="/style.css">
     <title>Document</title>
-    b
+    
   </head>
 
   <body>
+     <nav>
+      <ul>
+         <%  if (!isAuthenticated) { %>
+        <li class="link" >
+            <a href="/movies/login">Sign in</a>
+        </li>
+        <li class="link">
+            <a href="/movies/signup">Signup</a>
+        </li>
+        <% } else { %>
+       
+          <form action="/movies/logout" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit" class="btn">log out</button>  
+          </form>
+        
+           <% } %>
+       
+      </ul>
+    </nav>
    
     <a href="/movies/insert"> <button class="btn-add">Add a new movie</button></a>
     <% allMovies.map((movie) => {%>
@@ -25,7 +45,7 @@
           <p class="year"><%= movie.year %></p>
           <p class="director">Director: <span class="span-director"><%= movie.director %></span></p>
           <p class="rating">Imdb rating: <span class="span-rating"><%= movie.imdbRating %></span></p>
-           <a href="/movies/<%=movie._id%>"><button class="btn">More infos
+           <a href="/movies/edit-movie/<%=movie._id%>"><button class="btn">More infos
           </button></a> 
           
           </button>

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400;500;900&display=swap');
+
+body{
+    display: grid;
+    place-items: center;
+    background-color: #15151e;
+    font-family: "Roboto Slab", serif;
+    background-image: url('./iStock-1297611092.jpg');
+    background-size: cover;
+    
+}
+.form-container{
+    width: 300px;
+    height: 350px;
+    border: 1px white solid;
+    border-radius: 3%;
+    padding: 5rem;
+    margin-top: 5rem;
+    background-color: rgb(26, 26, 26);
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.label{
+    color: blanchedalmond;
+    
+}
+input[type=password],
+input[type=email] {
+    height: 2.6rem;
+    border-radius: 5px;
+    width: 18rem;
+    margin: 0.6rem 0 1.2rem 0;
+    border: none;
+}
+.btn-container{
+    display: flex;
+    gap: 2rem;
+}
+.btn{
+    width: 5rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem 0.5rem 1.1rem;
+    background-color: rgb(233, 51, 96);
+    border-radius: 5px;
+    color: white;
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-style: none;
+    inline-size:8rem;
+}
+.btn-signup{
+    width: 5rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem 0.5rem 1.1rem;
+    background-color: rgb(199, 59, 218);
+    border-radius: 5px;
+    color: white;
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-style: none;
+    inline-size:8rem;
+}

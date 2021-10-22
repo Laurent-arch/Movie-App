@@ -6,6 +6,15 @@
         background-color: #15151e;
         
       }
+      ul{
+        display: flex;
+        gap: 2rem;
+      }
+      .link{
+        color: white;
+        list-style: none;
+        font-size: 1.6rem;
+      }
       .container {
         max-width: 660px;
         margin: 3rem 0;

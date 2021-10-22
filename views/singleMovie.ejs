@@ -1,50 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css"href="/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/style.css" />
     <title>Single movie</title>
-</head>
-<body>
-   
-      
-     <div class="btn-top-container">
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <% if (!isAuthenticated) { %>
+        <li class="link">
+          <a href="/movies/login">Sign in</a>
+        </li>
+        <li class="link">
+          <a href="/movies/signup">Signup</a>
+        </li>
+        <% } else { %>
+
+        <form action="/movies/logout" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button type="submit" class="btn">log out</button>
+        </form>
+
+        <% } %>
+      </ul>
+    </nav>
+
+    <div class="btn-top-container">
       <a href="/movies"> <button class="btn">Back to the list</button></a>
       <h1 class="title"><%= movie.title %></h1>
-      <a href="/movies/insert"> <button class="btn-add">Add a new movie</button></a>
-      </div>
-   
+      <a href="/movies/insert">
+        <button class="btn-add">Add a new movie</button></a
+      >
+    </div>
+
     <div class="container">
-     
       <div class="sinopsis">
         <img src="<%= movie.image %>" alt="" class="image" />
         <div class="description">
           <p class="plot"><%= movie.plot %></p>
           <p class="year"><%= movie.year %></p>
-          <p class="director">Director: <span class="span-director"><%= movie.director %></span></p>
-          <p class="rating">Imdb rating: <span class="span-rating"><%= movie.imdbRating %></span></p>
+          <p class="director">
+            Director: <span class="span-director"><%= movie.director %></span>
+          </p>
+          <p class="rating">
+            Imdb rating:
+            <span class="span-rating"><%= movie.imdbRating %></span>
+          </p>
           <div class="btn-container">
-           <a href="/movies/update/<%=movie._id%>"><button class="btn-update">Update</button></a> 
-          
+            <a href="/movies/update/<%=movie._id%>"
+              ><button class="btn-update">Update</button></a
+            >
 
-          <form action="/movies/delete-movie" method="post">
-          <input type="hidden" value="<%= movie._id %>" name="movieId">
-          <button class="btn" type="submit" onclick="return confirm('Are you sure you want to delete this record?')">delete</button>
-        </form>
-       
+            <form action="/movies/delete-movie" method="post">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+              <input type="hidden" value="<%= movie._id %>" name="movieId" />
+              <button
+                class="btn"
+                type="submit"
+                onclick="return confirm('Are you sure you want to delete this record?')"
+              >
+                delete
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-     
 
-    <script>
-
-    </script>
-</body>
+    <script></script>
+  </body>
 </html>
-          
-
-        

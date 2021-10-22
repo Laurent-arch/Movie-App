@@ -8,6 +8,25 @@
     <title>Insert form</title>
   </head>
   <body>
+    <nav>
+      <ul>
+        <% if (!isAuthenticated) { %>
+        <li class="link">
+          <a href="/movies/login">Sign in</a>
+        </li>
+        <li class="link">
+          <a href="/movies/signup">Signup</a>
+        </li>
+        <% } else { %>
+
+        <form action="/movies/logout" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button type="submit" class="btn">log out</button>
+        </form>
+
+        <% } %>
+      </ul>
+    </nav>
     <div class="top-container">
       <a href="/movies"> <button class="btn">Back to the list</button></a>
       <h1 class="title">Add a new movie</h1>
@@ -30,12 +49,14 @@
         <label for="" class="label">imdb Rating</label>
         <input type="number" name="rating" placeholder="Rating" />
       </div>
-      <a href="/movies"><button id="submit-form" type="submit" class="btn" >Submit</button></a>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+      <a href="/movies"
+        ><button id="submit-form" type="submit" class="btn">Submit</button></a
+      >
       <p class="success" id="text-success">New movie was added successfully!</p>
     </form>
 
-    <script>
-      
-    </script>
+    <script></script>
   </body>
 </html>

@@ -7,12 +7,31 @@
     <link rel="stylesheet" type="text/css" href="/form.css" />
     <title>Insert form</title>
     <style>
-        .title{
-            margin-left: 20rem;
-        }
+      .title {
+        margin-left: 20rem;
+      }
     </style>
   </head>
   <body>
+    <nav>
+      <ul>
+        <% if (!isAuthenticated) { %>
+        <li class="link">
+          <a href="/movies/login">Sign in</a>
+        </li>
+        <li class="link">
+          <a href="/movies/signup">Signup</a>
+        </li>
+        <% } else { %>
+
+        <form action="/movies/logout" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button type="submit" class="btn">log out</button>
+        </form>
+
+        <% } %>
+      </ul>
+    </nav>
     <div class="top-container">
       <a href="/movies"> <button class="btn">Back to the list</button></a>
       <h1 class="title">Update <%= movie.title %></h1>
@@ -20,24 +39,51 @@
 
     <form action="" class="form-container" method="post">
       <div class="grid-1">
-          <input type="hidden" value="<%= movie._id %>">
+        <input type="hidden" value="<%= movie._id %>" />
         <label for="" class="label">Title</label>
-        <input type="text" name="title" placeholder="Title" value="<%= movie.title %>"/>
+        <input
+          type="text"
+          name="title"
+          placeholder="Title"
+          value="<%= movie.title %>"
+        />
         <label for="" class="label">Image</label>
-        <input type="text" name="image" placeholder="Enter a URL" value="<%= movie.image %>"/>
+        <input
+          type="text"
+          name="image"
+          placeholder="Enter a URL"
+          value="<%= movie.image %>"
+        />
         <label for="" class="label">Plot</label>
         <textarea type="text" name="plot"></textarea>
       </div>
       <div class="grid-2">
         <label for="" class="label">Year</label>
-        <input type="number" name="year" placeholder="Year" value="<%= movie.year %>"/>
+        <input
+          type="number"
+          name="year"
+          placeholder="Year"
+          value="<%= movie.year %>"
+        />
         <label for="" class="label">Director</label>
-        <input type="text" name="director" placeholder="Director" value="<%= movie.director %>"/>
+        <input
+          type="text"
+          name="director"
+          placeholder="Director"
+          value="<%= movie.director %>"
+        />
         <label for="" class="label">imdb Rating</label>
-        <input type="text" name="rating" placeholder="Rating" value="<%= movie.rating %>"/>
+        <input
+          type="text"
+          name="rating"
+          placeholder="Rating"
+          value="<%= movie.rating %>"
+        />
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
       </div>
-      <a href="/movies"> <button type="submit" id="submit-form" class="btn">Submit</button></a>
-      
+      <a href="/movies">
+        <button type="submit" id="submit-form" class="btn">Submit</button></a
+      >
     </form>
 
     <script src="/script.js"></script>
