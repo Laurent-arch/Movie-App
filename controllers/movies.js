@@ -3,16 +3,14 @@ const Movie = require("../models/Movie");
 const getAllMovies = async (req, res) => {
   try {
     const allMovies = await Movie.find({});
-    res
-      .status(201)
-      .render("movies.ejs", {
-        allMovies,
-       
-      });
+    res.status(201).render("movies.ejs", {
+      allMovies,
+    });
   } catch (error) {
     res.status(500).json({ msg: "no movies" });
   }
 };
+
 
 const insertMovie = async (req, res) => {
   try {
@@ -24,13 +22,13 @@ const insertMovie = async (req, res) => {
       director: req.body.director,
       imdbRating: req.body.rating,
     });
-    movie.save();
+     await movie.save();
 
     res.status(200).render("insertMovie.ejs", {
       movie,
-    
+      path: '/movies/insert'
     });
-    res.redirect("/");
+    return res.redirect('/movies')
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "no movie inserted" });
@@ -45,7 +43,6 @@ const getMovie = async (req, res) => {
     }
     res.status(200).render("singleMovie.ejs", {
       movie,
-     
     });
   } catch (error) {
     res.status(500).json({ msg: "no movie with this id" });
@@ -70,12 +67,10 @@ const updateMovie = async (req, res) => {
         .status(404)
         .json({ msg: `no movie with id: ${req.params.id}` });
     }
-    res
-      .status(200)
-      .render("update.ejs", {
-        movie,
-        
-      });
+    res.status(200).render("update.ejs", {
+      movie,
+      path: "/update/:id",
+    });
   } catch (error) {
     res.status(500).json({ msg: "no movie with this id" });
   }

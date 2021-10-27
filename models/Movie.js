@@ -1,32 +1,32 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const MovieSchema = new mongoose.Schema({
   title: {
     type: String,
-    
+    required: true,
     trim: true,
   },
   year: {
     type: Number,
-    
+    required: true,
   },
   image: {
     type: String,
-    
+    required: true,
   },
   plot: {
     type: String,
-   
+    required: true,
     trim: true,
   },
   director: {
     type: String,
-    
+    required: true,
     trim: true,
   },
   imdbRating: {
     type: Number,
-    
+    required: true,
   },
 });
 

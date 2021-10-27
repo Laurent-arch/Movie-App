@@ -9,6 +9,12 @@ body{
     background-size: cover;
     
 }
+.error-message{
+    color: blanchedalmond;
+    
+   padding-bottom: 2rem;
+
+}
 .form-container{
     width: 300px;
     height: 350px;
@@ -40,10 +46,25 @@ input[type=email] {
     display: flex;
     gap: 2rem;
 }
-.btn{
+.btn-logout {
     width: 5rem;
     margin-top: 1rem;
     padding: 0.5rem 1.6rem 0.5rem 1.1rem;
+    background-color: rgb(233, 51, 96);
+    border-radius: 5px;
+    color: white;
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-style: none;
+    inline-size:8rem;
+    margin-bottom: 1rem;
+}
+
+.btn{
+    width: 5rem;
+    margin-top: 1rem;
+    /* padding: 0.5rem 1.6rem 0.5rem 1.1rem; */
     background-color: rgb(233, 51, 96);
     border-radius: 5px;
     color: white;
@@ -56,7 +77,9 @@ input[type=email] {
 .btn-signup{
     width: 5rem;
     margin-top: 1rem;
-    padding: 0.5rem 1.6rem 0.5rem 1.1rem;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px 2px;
     background-color: rgb(199, 59, 218);
     border-radius: 5px;
     color: white;
@@ -65,4 +88,21 @@ input[type=email] {
     cursor: pointer;
     border-style: none;
     inline-size:8rem;
+}
+.btn-signup-reset{
+    width: 5rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem 0.5rem 1.1rem;
+    background-color: rgb(199, 59, 218);
+    border-radius: 5px;
+    color: white;
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-style: none;
+    inline-size:12rem;
+}
+.label-reset{
+    color: blanchedalmond;
+    padding-top: 1rem;
 }

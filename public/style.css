@@ -1,125 +1,189 @@
- @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400;500;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400;500;900&display=swap");
 
-      body {
-        display: grid;
-        place-items: center;
-        background-color: #15151e;
-        
-      }
-      ul{
-        display: flex;
-        gap: 2rem;
-      }
-      .link{
-        color: white;
-        list-style: none;
-        font-size: 1.6rem;
-      }
-      .container {
-        max-width: 660px;
-        margin: 3rem 0;
-      }
-      .btn-top-container{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
-      
-      .title{
-          color: yellow;
-          font-size: 2.8rem;
-          margin-bottom: 2rem;
-          letter-spacing: 2px;
-          
-      }
-      h1,
-      p {
-        font-family: "Roboto Slab", serif;
-        color: blanchedalmond;
-      }
-      .sinopsis {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-      }
-      .image {
-        border-radius: 5%;
-      }
-      .description {
-        display: flex;
-        flex-direction: column;
-      }
-      .span-rating{
-          color: yellow;
-          font-size: 1.2rem;
-          margin-left: 0.4rem;
-          font-weight: bold;
-      }
-      .span-director{
-          font-weight: bold;
-          margin-left: 0.4rem;
-      }
-      .year{
-          font-weight: bold;
-      }
-      .year,
-      .director,
-      .rating,
-      .plot,
-      .btn {
-        margin-left: 2rem;
-      }
-      .btn{
-          width: 5rem;
-          margin-top: 1rem;
-          padding: 0.5rem 1.6rem 0.5rem 1.1rem;
-          background-color: rgb(233, 51, 96);
-          border-radius: 5px;
-          color: white;
-          font-family: inherit;
-          font-size: 1.2rem;
-          cursor: pointer;
-          border-style: none;
-          inline-size:8rem;
-      }
-      .btn:hover{
-          background-color: rgb(128, 31, 55);
-      }
-      .btn-container{
-          display: flex;
-           
-      }
-      .btn-add{
-          width: 5rem;
-          margin-top: 1rem;
-          margin-right: 2rem;
-          padding: 0.5rem 1.6rem 0.5rem 1.1rem;
-          background-color: rgb(94, 185, 2);
-          border-radius: 5px;
-          color: white;
-          font-family: inherit;
-          font-size: 1.2rem;
-          cursor: pointer;
-          border-style: none;
-          inline-size:8rem;
-      }
-      .btn-add:hover{
-        background-color: rgb(66, 141, 100);
-      }
-      .btn-update{
-          width: 5rem;
-          margin-top: 1rem;
-          padding: 0.5rem 1.6rem 0.5rem 1.1rem;
-          background-color: chocolate;
-          border-radius: 5px;
-          color: white;
-          font-family: inherit;
-          font-size: 1.2rem;
-          cursor: pointer;
-          border-style: none;
-          inline-size:8rem;
-          margin-left: 2rem;
-      }
-      .btn-update:hover{
-        background-color: rgb(170, 85, 23);
-      }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: grid;
+  place-items: center;
+  background-color: #15151e;
+  
+}
+
+.nav {
+  height: 6rem;
+  background-color: #242433;
+  box-shadow: 5px 3px 3px black;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  
+}
+.btn-add-link {
+  width: 70%;
+}
+.link-container {
+  display: flex;
+  margin-right: 3rem;
+  gap: 2rem;
+}
+
+.link {
+  list-style: none;
+  text-decoration: none;
+  font-size: 1.4rem;
+  padding: 5px 5px;
+  border-radius: 20px;
+  border: rgb(233, 51, 96) 1px solid;
+}
+.link:hover{
+  border: blanchedalmond 1px solid;
+}
+.a-link {
+  list-style: none;
+  text-decoration: none;
+  color: rgb(233, 51, 96);
+  padding: 1rem;
+}
+.a-link:hover{
+  color: blanchedalmond;
+}
+.a-link-add {
+  list-style: none;
+  text-decoration: none;
+  color: rgb(233, 51, 96);
+  padding: 1rem;
+}
+
+.form-navigation {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  gap: 2rem;
+}
+.container {
+  max-width: 660px;
+  margin: 3rem 0;
+}
+.btn-top-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: yellow;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+h1,
+p {
+  font-family: "Roboto Slab", serif;
+  color: blanchedalmond;
+}
+.sinopsis {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.image {
+  border-radius: 5%;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.span-rating {
+  color: yellow;
+  font-size: 1.2rem;
+  margin-left: 0.4rem;
+  font-weight: bold;
+}
+.span-director {
+  font-weight: bold;
+  margin-left: 0.4rem;
+}
+.year {
+  font-weight: bold;
+}
+.year,
+.director,
+.rating,
+.plot,
+.btn {
+  margin-left: 2rem;
+}
+.btn {
+  width: 5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1.6rem 0.5rem 1.1rem;
+  background-color: rgb(233, 51, 96);
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-style: none;
+  inline-size: 8rem;
+}
+.btn-logout {
+  width: 5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1.6rem 0.5rem 1.1rem;
+  background-color: rgb(252, 9, 61);
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-style: none;
+  inline-size: 8rem;
+  margin-bottom: 1rem;
+}
+.btn:hover {
+  background-color: rgb(128, 31, 55);
+}
+.btn-container {
+  display: flex;
+}
+.btn-add {
+  width: 5rem;
+  margin-top: 1rem;
+  margin-right: 2rem;
+  padding: 0.5rem 1.6rem 0.5rem 1.1rem;
+  background-color: rgb(94, 185, 2);
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-style: none;
+  inline-size: 8rem;
+  margin-left: 2rem;
+}
+
+.btn-add:hover {
+  background-color: rgb(66, 141, 100);
+}
+.btn-update {
+  width: 5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1.6rem 0.5rem 1.1rem;
+  background-color: chocolate;
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-style: none;
+  inline-size: 8rem;
+  margin-left: 2rem;
+}
+.btn-update:hover {
+  background-color: rgb(170, 85, 23);
+}

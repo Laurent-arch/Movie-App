@@ -8,29 +8,26 @@
     <title>Document</title>
   </head>
   <body>
-    
     <main class="form-container">
       <% if(errorMessage) { %>
       <div class="error-message"><%= errorMessage %></div>
       <% } %>
-      <form class="login-form" action="" method="POST">
+      <form class="login-form" action="/movies/reset" method="POST">
         <div class="form-control">
-          <label for="email" class="label">E-Mail</label><br>
+          <label for="email" class="label">Enter your email</label><br />
           <input type="email" name="email" id="email" />
         </div>
-        <div class="form-control">
-          <label for="password" class="label">Password</label> <br>
-          <input type="password" name="password" id="password" />
-        </div>
+
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
         <div class="btn-container">
-        <button class="btn" type="submit">Login</button>
-       <a href="/movies/signup" class="btn-signup">Signup</a>
-      
+          
+          <% if (!isAuthenticated) { %>
+          <a href="/movies/signup"
+            ><button class="btn-signup-reset" type="submit">Reset password</button></a
+          >
+          <% } %>
         </div>
-         <a class="label-reset" href="/movies/reset">reset password</a>
       </form>
-     
     </main>
   </body>
 </html>
