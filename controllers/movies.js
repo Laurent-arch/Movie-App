@@ -26,9 +26,9 @@ const insertMovie = async (req, res) => {
 
     res.status(200).render("insertMovie.ejs", {
       movie,
-      path: '/movies/insert'
+      
     });
-    return res.redirect('/movies')
+   
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "no movie inserted" });

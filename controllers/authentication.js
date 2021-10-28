@@ -3,12 +3,12 @@ const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");
 const crypto = require("crypto");
+const { validationResult } = require("express-validator");
 
 const transporter = nodemailer.createTransport(
   sendGridTransport({
     auth: {
-      api_key:
-        "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",
+      api_key: process.env.SEND_GRID_API,
     },
   })
 );
@@ -74,39 +74,38 @@ const postLogin = (req, res, next) => {
 const postSignup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-  const confirmPassword = req.body.confirmPassword;
-  User.findOne({ email: email })
-    .then((userDoc) => {
-      if (userDoc) {
-        req.flash(
-          "error",
-          "E-Mail exists already, please pick a different one."
-        );
-        return res.redirect("/signup");
-      }
-      return bcrypt
-        .hash(password, 12)
-        .then((hashedPassword) => {
-          const user = new User({
-            email: email,
-            password: hashedPassword,
-            cart: { items: [] },
-          });
-          return user.save();
-        })
-        .then((result) => {
-          res.redirect("/movies/login");
-          return transporter.sendMail({
-            to: email,
-            from: "garcia.laurent@hotmail.fr",
-            subject: "Signup succeeded!",
-            html: "<h1>You successfully signed up!</h1>",
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  const errors = validationResult(req);
+  console.log(errors);
+  if (!errors.isEmpty()) {
+    return res.status(422).render("signup", {
+      path: "/movies/signup",
+      errorMessage: errors.array()[0].msg,
+    });
+  }
+
+  return bcrypt
+    .hash(password, 12)
+    .then((hashedPassword) => {
+      const user = new User({
+        email: email,
+        password: hashedPassword,
+        cart: { items: [] },
+      });
+      return user.save();
     })
+    .then((result) => {
+      res.redirect("/movies/login");
+      return transporter.sendMail({
+        to: email,
+        from: "garcia.laurent@hotmail.fr",
+        subject: "Signup succeeded!",
+        html: "<h1>You successfully signed up!</h1>",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
     .catch((err) => {
       console.log(err);
     });
@@ -174,8 +173,6 @@ const getNewPassword = (req, res, next) => {
         message = null;
       }
       res.render("new-password.ejs", {
-        
-      
         errorMessage: message,
         userId: user._id.toString(),
         passwordToken: token,
@@ -225,5 +222,5 @@ module.exports = {
   getReset,
   postReset,
   getNewPassword,
-  postNewPassword
+  postNewPassword,
 };
